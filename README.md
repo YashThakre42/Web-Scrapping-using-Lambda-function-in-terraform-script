@@ -1,4 +1,4 @@
-We will be able to store the contents of amazon.com into our S3 bucket using labda function.
+We will be able to store the contents of amazon.com into our S3 bucket using lambda function.
 1. Lambda Function (lambda_function.py)
    This Python code defines an AWS Lambda function that scrapes the content of a webpage (Amazon.com in this case) and stores it in an S3 bucket.
 2. Terraform Remote Backend Configuration (remote_backend.tf)
