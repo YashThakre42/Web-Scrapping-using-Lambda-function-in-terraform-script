@@ -1,8 +1,15 @@
-We will be able to store the contents of amazon.com into our S3 bucket using lambda function.
+**Project Structure & Purpose**
 
-1. **lambda.py** ......Lambda Function (lambda_function.py)
-   This Python code defines an AWS Lambda function that scrapes the content of a webpage (Amazon.com in this case) and stores it in an S3 bucket.
-2. **backend.tf**......Terraform Remote Backend Configuration (remote_backend.tf)
-   This file sets up the remote backend for Terraform to store its state file in an S3 bucket and lock the state using DynamoDB
-3. **main.tf**........Terraform Infrastructure Configuration (terraform_web_scrapper.tf)
-    This Terraform configuration creates the necessary AWS resources like the S3 bucket, IAM role and policy for Lambda, and the Lambda function itself.
+**lambda_function.py** → Lambda Function (Python Script)
+This script scrapes webpage content from Amazon.com.
+The scraped data is stored in an AWS S3 bucket.
+
+**remote_backend.t**f → Terraform Remote Backend Configuration
+Stores Terraform state in an S3 bucket for consistency.
+Uses DynamoDB to lock the state and prevent conflicts when multiple users apply Terraform changes.
+
+**terraform_web_scraper.tf** → Terraform Infrastructure Configuration
+Provisions AWS resources, including:
+S3 Bucket (for storing scraped data).
+IAM Role & Policy (grants Lambda access to S3).
+Lambda Function (executes the web scraping task).
