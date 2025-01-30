@@ -10,7 +10,7 @@ def lambda_handler(event, context):
     url = "https://www.amazon.com/"
     
     # Define S3 parameters
-    bucket_name = 'ygt-web-scrap-bucket2'
+    bucket_name = 'yash-web-scrap-bucket2'
     object_name = 'terra-webpage-content.html'
     
     config = Config(connect_timeout=900, read_timeout=900, retries={'max_attempts': 10})
