@@ -5,10 +5,12 @@ from botocore.exceptions import NoCredentialsError
 import os
 
 def lambda_handler(event, context):
+    
     # Define URL
     url = "https://www.amazon.com/"
+    
     # Define S3 parameters
-    bucket_name = 'terra-web-scrap-bucket2'
+    bucket_name = 'ygt-web-scrap-bucket2'
     object_name = 'terra-webpage-content.html'
     
     config = Config(connect_timeout=900, read_timeout=900, retries={'max_attempts': 10})
