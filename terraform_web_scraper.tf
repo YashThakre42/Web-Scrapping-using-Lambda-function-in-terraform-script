@@ -5,7 +5,6 @@ terraform {
       version = "~> 5.68"
     }
   }
-
   required_version = ">= 1.9.0"
 }
 provider "aws"{
@@ -15,7 +14,7 @@ provider "aws"{
 
 #Creating the S3 Bucket
 resource "aws_s3_bucket" "terra_web_scrap_bucket" {
-  bucket = "terra-web-scrap-bucket"
+  bucket = "yash-terra-web-scrap-bucket"
   
   #versioning {
   #  enabled = true
@@ -29,7 +28,7 @@ resource "aws_s3_bucket" "terra_web_scrap_bucket" {
 
 #Creating the IAM Role and Create policy Attach Necessary Policies s3:PutObject, s3:ListBucket and Attaching terra_web_scrap_policy_attachment"
 resource "aws_iam_role" "terra_web_scrap_role" {
-  name = "terra_web_scrap_role"
+  name = "yash-terra_web_scrap_role"
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
@@ -43,7 +42,7 @@ resource "aws_iam_role" "terra_web_scrap_role" {
 }
 
 resource "aws_iam_policy" "terra_web_scrap_policy" {
-  name        = "terra_web_scrap_policy"
+  name        = "yash-terra_web_scrap_policy"
   description = "Policy for Lambda to interact with S3 bucket"
   policy = jsonencode({
     Version = "2012-10-17",
@@ -89,7 +88,7 @@ output_path = "${path.module}/lambda_function.zip"
 #Add the aws_lambda_function function
 resource "aws_lambda_function" "terra_web_scrap_lambda" {
 filename                       = "${path.module}/lambda_function.zip"
-function_name                  = "terra_web_scrap_lambda"
+function_name                  = "yash_terra_web_scrap_lambda"
 role                           =  aws_iam_role.terra_web_scrap_role.arn
 handler                        = "lambda_function.lambda_handler"
 runtime                        = "python3.12"
